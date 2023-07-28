@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet} from "react-native";
+import {Text, View, StyleSheet, TextInput, Platform} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 
 export const Home = () => {
@@ -6,6 +6,7 @@ export const Home = () => {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Text style={styles.title}>Welcome,Dev!</Text>
+        <TextInput style={styles.input} />
       </View>
     </SafeAreaView>
   );
@@ -26,5 +27,13 @@ const styles = StyleSheet.create({
     color: "#f1f1f1",
     fontSize: 24,
     fontWeight: "bold",
+  },
+  input: {
+    backgroundColor: "#29292e",
+    color: "#f1f1f1",
+    fontSize: 18,
+    padding: Platform.OS === "ios" ? 15 : 12,
+    marginTop: 30,
+    borderRadius: 7,
   },
 });
