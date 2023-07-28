@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Text,
   View,
@@ -9,11 +10,14 @@ import {
 import {SafeAreaView} from "react-native-safe-area-context";
 
 export const Home = () => {
+  const [newTask, setNewTask] = React.useState("");
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Text style={styles.title}>Welcome,Dev!</Text>
         <TextInput
+          onChangeText={setNewTask}
           placeholderTextColor="#555"
           placeholder="Nova tarefa..."
           style={styles.input}
@@ -23,6 +27,8 @@ export const Home = () => {
         </TouchableOpacity>
 
         <Text style={styles.titleTasks}>Minhas tarefas</Text>
+
+        <Text style={{color: "#fff"}}>{newTask}</Text>
       </View>
     </SafeAreaView>
   );
