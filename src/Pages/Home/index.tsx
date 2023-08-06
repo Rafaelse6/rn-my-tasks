@@ -6,9 +6,9 @@ import {
   TextInput,
   Platform,
   TouchableOpacity,
-  FlatList,
 } from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
+import {TaskList} from "../../components/TaskList";
 
 interface Task {
   id: string;
@@ -47,15 +47,7 @@ export const Home = () => {
 
         <Text style={styles.titleTasks}>Minhas tarefas</Text>
 
-        <FlatList
-          data={tasks}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => (
-            <TouchableOpacity style={styles.buttonTask}>
-              <Text style={styles.titleTask}>{item.title}</Text>
-            </TouchableOpacity>
-          )}
-        />
+        <TaskList tasks = {tasks}/>
       </View>
     </SafeAreaView>
   );
