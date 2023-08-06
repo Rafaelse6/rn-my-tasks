@@ -6,6 +6,7 @@ import {
   TextInput,
   Platform,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
 
@@ -21,7 +22,7 @@ export const Home = () => {
   const handleAddNewTask = () => {
     const data = {
       id: String(new Date().getTime()),
-      title: newTask ? newTask : "Empy task",
+      title: newTask ? newTask : "Empty task",
     };
 
     setTasks([...tasks, data]);
@@ -46,11 +47,15 @@ export const Home = () => {
 
         <Text style={styles.titleTasks}>Minhas tarefas</Text>
 
-        {tasks.map(task => (
-          <TouchableOpacity key={task.id} style={styles.buttonTask}>
-            <Text style={styles.titleTask}>{task.title}</Text>
-          </TouchableOpacity>
-        ))}
+        <FlatList
+          data={tasks}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => (
+            <TouchableOpacity style={styles.buttonTask}>
+              <Text style={styles.titleTask}>{item.title}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </SafeAreaView>
   );
