@@ -21,7 +21,7 @@ export const Home = () => {
       title: newTask ? newTask : "Empty task",
     };
 
-    addTask();
+    addTask(data);
   };
 
   return (
